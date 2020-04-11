@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   DateFormat fn = DateFormat("M-dd-yyyy");
-  String _selectedLocation = "ID";
+  String _selectedLocation = "TR"; //TÜRKİYE
   String datetime = '2-14-2020';
 
   @override
@@ -79,11 +79,11 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(color: AppStyle.txg)),
                       ],
                     ),
-                    titleWidget('Confirmed',
+                    titleWidget('Vaka Sayısı',
                         nf.format(home?.confirmed?.value) ?? '', AppStyle.txw),
-                    titleWidget('Recovered',
+                    titleWidget('İyileşen',
                         nf.format(home?.recovered?.value) ?? '', AppStyle.txg),
-                    titleWidget('Deaths', nf.format(home?.deaths?.value) ?? '',
+                    titleWidget('Ölüm', nf.format(home?.deaths?.value) ?? '',
                         AppStyle.txr),
                   ],
                 ),
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                           child: DropdownButton(
                               isExpanded: true,
                               hint: Text(
-                                'Please choose a location',
+                                'Lütfen bir Bölge Seçiniz',
                                 style: TextStyle(color: AppStyle.txg),
                               ),
                               value: _selectedLocation,
@@ -134,25 +134,10 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              ListTile(
-                title: Text('History Corona', style: AppStyle.stdtw),
-                subtitle: Text('Riwayat kasus corona di indonesia',
-                    style: AppStyle.stdtr),
-                trailing: Icon(
-                  Icons.keyboard_arrow_right,
-                  color: AppStyle.txw,
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => HistoryPage()),
-                  );
-                },
-              ),
+
               Divider(color: AppStyle.txw),
               ListTile(
-                title: Text('Daily Cases', style: AppStyle.stdtw),
+                title: Text('Günlük Vakalar', style: AppStyle.stdtw),
                 trailing: InkWell(
                     onTap: () {
                       DatePicker.showDatePicker(context,
@@ -202,7 +187,7 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: Column(
             children: <Widget>[
-              Text('Confirmed', style: AppStyle.stdtw),
+              Text('Vaka Sayısı', style: AppStyle.stdtw),
               Padding(
                 padding: AppStyle.pv10,
                 child: Text(confirm ?? '',
@@ -214,7 +199,7 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: Column(
             children: <Widget>[
-              Text('Recovered', style: AppStyle.stdtw),
+              Text('İyileşen', style: AppStyle.stdtw),
               Padding(
                 padding: AppStyle.pv10,
                 child: Text(recovered ?? '',
@@ -226,7 +211,7 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: Column(
             children: <Widget>[
-              Text('Deaths', style: AppStyle.stdtw),
+              Text('Ölüm', style: AppStyle.stdtw),
               Padding(
                 padding: AppStyle.pv10,
                 child: Text(death ?? '',
